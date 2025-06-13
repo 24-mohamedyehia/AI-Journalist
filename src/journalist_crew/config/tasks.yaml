@@ -1,0 +1,31 @@
+web_research_task:
+  description: |
+    Generate up {no_keywords} search queries in {language} based on the topic: "{topic}" for a journalistic article in the year {current_year}.
+    - query should be phrased especially the latest developments and advancements.
+    - Then, search query using search tool.
+    - Ignore any page that does not contain an article (e.g., homepages, category pages, PDFs, or navigation pages).
+  expected_output: |
+    A JSON object conforming to the AllSearchResults model.
+
+scraper_task:
+  description: |
+    "1. You will be given a list of URLs in {search_results}. \n"
+    "2. Your goal is to select the best {no_keywords} articles with top score from this list. \n"
+    "3. For each URL, visit the page and scrape the article details required by the `AllExtractedArticles`
+  expected_output: |
+    A JSON object conforming to the AllExtractedArticles model. 
+
+article_writer_task:
+  description: |
+    Write a journalistic article based on {collected_articles}:
+    include information about our company in genrated articel.
+    Structure the article in the following sections:
+      - **Headline**: A compelling title.
+      - **Lead Paragraph**: Summarize the most newsworthy aspect.
+      - **Background**: Context and history.
+      - **Key Findings**: Main points and data.
+      - **Expert Commentary**: Quotes or insights.
+      - **Conclusion**: Wrap-up and future outlook.
+    Ensure it is well-structured, engaging, and suitable for publication.
+  expected_output: |
+    A Markdown File containing a well-structured journalistic article 
