@@ -1,1 +1,2 @@
 # AI-Journalist
+AI Journalist is a Python application that uses AI to generate articles based on a given topic. It uses a crew of AI agents to generate articles, and then uses a database to store the articles.
