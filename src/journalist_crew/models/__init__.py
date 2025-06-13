@@ -1,0 +1,1 @@
+from .models import AllSearchResults , AllExtractedArticles
