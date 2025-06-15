@@ -27,5 +27,13 @@ class Database:
         )
         self.conn.commit()
 
+    def get_all_articles(self):
+        self.cursor.execute("SELECT id, topic, date FROM articles ORDER BY date DESC")
+        return self.cursor.fetchall()
+
+    def get_article_by_id(self, article_id):
+        self.cursor.execute("SELECT id, topic, article, date FROM articles WHERE id = ?", (article_id,))
+        return self.cursor.fetchone()
+
     def close(self):
         self.conn.close()
