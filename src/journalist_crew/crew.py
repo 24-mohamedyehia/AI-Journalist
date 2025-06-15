@@ -26,43 +26,43 @@ class ArticleMakingCrew:
     agents_config = 'config/agents.yaml'
     tasks_config = 'config/tasks.yaml'
 
-    # @agent
-    # def web_research_agent(self) -> Agent:
-    #     return Agent(
-    #         config=self.agents_config['web_research_agent'],
-    #         allow_delegation=False,
-    #         verbose=True,
-    #         llm=mistral_small,
-    #         tools=[search_engine_tool]
-    #     )
+    @agent
+    def web_research_agent(self) -> Agent:
+        return Agent(
+            config=self.agents_config['web_research_agent'],
+            allow_delegation=False,
+            verbose=True,
+            llm=mistral_small,
+            tools=[search_engine_tool]
+        )
     
-    # @task
-    # def web_research_task(self) -> Task:
-    #     return Task(
-    #         config=self.tasks_config['web_research_task'],
-    #         agent=self.web_research_agent(),
-    #         output_json=AllSearchResults,
-    #         output_file = os.path.join(os.path.dirname(__file__), f"research/step_one_research_topic.json")
-    #     )
+    @task
+    def web_research_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['web_research_task'],
+            agent=self.web_research_agent(),
+            output_json=AllSearchResults,
+            output_file = os.path.join(os.path.dirname(__file__), f"research/step_one_research_topic.json")
+        )
 
-    # @agent
-    # def scraper_agent(self) -> Agent:
-    #     return Agent(
-    #         config=self.agents_config['scraper_agent'],
-    #         allow_delegation=False,
-    #         verbose=True,
-    #         llm=mistral_small,
-    #         tools=[read_json_tool, web_scraping_tool]
-    #     )
+    @agent
+    def scraper_agent(self) -> Agent:
+        return Agent(
+            config=self.agents_config['scraper_agent'],
+            allow_delegation=False,
+            verbose=True,
+            llm=mistral_small,
+            tools=[read_json_tool, web_scraping_tool]
+        )
 
-    # @task
-    # def scraper_task(self) -> Task:
-    #     return Task(
-    #         config=self.tasks_config['scraper_task'],
-    #         agent=self.scraper_agent(),
-    #         output_json=AllExtractedArticles,
-    #         output_file = os.path.join(os.path.dirname(__file__), f"research/step_two_extracted_articles.json")
-    #     )
+    @task
+    def scraper_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['scraper_task'],
+            agent=self.scraper_agent(),
+            output_json=AllExtractedArticles,
+            output_file = os.path.join(os.path.dirname(__file__), f"research/step_two_extracted_articles.json")
+        )
 
     @agent
     def article_writer_agent(self) -> Agent:
